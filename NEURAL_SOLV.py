@@ -1,4 +1,4 @@
-# sistema_ecuaciones_cyberpunk_mejorado.py
+NEURAL_SOLV_EQU
 import tkinter as tk
 from tkinter import messagebox, Toplevel, filedialog
 from fractions import Fraction
