@@ -1,0 +1,212 @@
+ISSUE #2: Documentación detallada del Neural Equation Solver v2.0
+================================================================================
+
+INFORMACIÓN DEL ISSUE:
+- Autor: DannielEraso
+- Estado: closed
+- Número: 2
+- URL: https://github.com/DannielEraso/TEST_ECUACIONES/issues/2
+
+================================================================================
+CONTENIDO:
+================================================================================
+
+## Documentación Completa del Proyecto Neural Equation Solver v2.0
+
+**Fecha de generación:** 2025-05-23 21:15:31 UTC
+**Autor:** DannielEraso
+
+---
+
+## **DESCRIPCIÓN GENERAL DEL PROYECTO**
+
+**Neural Equation Solver v2.0** es una aplicación de escritorio desarrollada en Python que resuelve sistemas de ecuaciones lineales utilizando métodos matemáticos clásicos, pero con una interfaz gráfica moderna de estilo "cyberpunk".
+
+---
+
+## **ARQUITECTURA Y TECNOLOGÍAS UTILIZADAS**
+
+### **Librerías Importadas:**
+- **`tkinter`**: Interfaz gráfica principal
+- **`numpy`**: Cálculos matriciales y operaciones matemáticas
+- **`fractions`**: Manejo de números fraccionarios para mayor precisión
+- **`matplotlib`**: Visualización gráfica de sistemas 2x2
+- **`fpdf`**: Generación de reportes en PDF
+- **`datetime`**: Marcas de tiempo en reportes
+- **`random` y `time`**: Efectos de animación
+
+---
+
+## **ESTRUCTURA DE LA CLASE PRINCIPAL**
+
+### **`SistemaEcuacionesApp`**
+Es la clase principal que maneja toda la aplicación:
+
+**Atributos importantes:**
+- `tamano`: Variable que almacena el tamaño de la matriz (2x2 hasta 6x6)
+- `entradas`: Lista que contiene los widgets de entrada de datos
+- `ultimos_pasos`: Almacena el procedimiento paso a paso de la última solución
+- `ultimas_soluciones`: Resultados de la última resolución
+- `uso_fracciones`: Booleano para trabajar con fracciones exactas
+
+---
+
+## **FUNCIONALIDADES PRINCIPALES**
+
+### **1. Interfaz Gráfica Cyberpunk**
+```python
+def crear_encabezado(self):
+def setup_fonts(self):
+def start_background_effects(self):
+```
+- **Diseño visual**: Colores neón (#00ff41, #00ffff, #ff0080)
+- **Animaciones**: Título parpadeante, efectos hover en botones
+- **Fuentes**: OCR A Extended, Courier New para aspecto "hacker"
+- **Efectos visuales**: Bordes, gradientes simulados, indicadores de estado
+
+### **2. Generación Dinámica de Matrices**
+```python
+def crear_campos(self):
+```
+- Permite sistemas de **2x2 hasta 6x6**
+- Campos de entrada para coeficientes (matriz A) y términos independientes (vector B)
+- Separación visual clara entre matriz A y vector B
+- Validación de entrada en tiempo real
+
+### **3. Método de Cramer**
+```python
+def resolver_cramer(self):
+```
+**Algoritmo:**
+1. Calcula el determinante principal de la matriz A
+2. Verifica que det(A) ≠ 0 (solución única)
+3. Para cada variable xi, reemplaza la columna i con el vector B
+4. Calcula det(Ai) y aplica: xi = det(Ai)/det(A)
+5. Guarda cada paso del procedimiento
+
+### **4. Método Gauss-Jordan**
+```python
+def resolver_gauss(self):
+```
+**Algoritmo:**
+1. Forma la matriz aumentada [A|B]
+2. Normaliza cada fila dividiendo por el elemento diagonal
+3. Elimina los elementos por encima y debajo del pivote
+4. El resultado es la matriz identidad con las soluciones
+
+### **5. Exportación de Resultados**
+```python
+def guardar_pdf(self):
+def guardar_txt(self):
+```
+- **PDF**: Usando FPDF con formato profesional
+- **TXT**: Archivo de texto plano con formato estructurado
+- Incluye fecha, procedimiento completo y metadatos
+
+### **6. Visualización Gráfica (Solo 2x2)**
+```python
+def graficar(self):
+```
+- Representa las ecuaciones como rectas en el plano
+- Marca el punto de intersección (solución)
+- Estilo cyberpunk con matplotlib
+- Colores personalizados y efectos visuales
+
+---
+
+## **CARACTERÍSTICAS TÉCNICAS AVANZADAS**
+
+### **Manejo de Precisión Numérica**
+```python
+A[i, j] = Fraction(val) if self.uso_fracciones.get() else float(val)
+```
+- Opción para usar **fracciones exactas** evitando errores de punto flotante
+- Resultados más precisos para números racionales
+
+### **Animaciones y Efectos**
+```python
+def animate_title(self):
+def animate_entry_focus(self):
+def animate_button_hover(self):
+```
+- **Título parpadeante** con colores cambiantes
+- **Efecto glow** en campos de entrada al obtener foco
+- **Efectos hover** en botones con cambios de color y relieve
+
+### **Validación y Control de Errores**
+- Verificación de datos faltantes
+- Control de determinante cero
+- Manejo de excepciones con mensajes cyberpunk
+- Validación de formato de entrada
+
+---
+
+## **FLUJO DE USUARIO**
+
+1. **Configuración**: Seleccionar tamaño de matriz y modo de fracciones
+2. **Entrada de datos**: Llenar matriz de coeficientes y vector de términos
+3. **Resolución**: Elegir método (Cramer o Gauss-Jordan)
+4. **Visualización**: Ver procedimiento paso a paso
+5. **Exportación**: Guardar resultados en PDF o TXT
+6. **Gráfica**: Visualizar sistema 2x2 (opcional)
+
+---
+
+## **ASPECTOS DESTACABLES PARA LA PRESENTACIÓN**
+
+### **1. Educativo**
+- Muestra **cada paso** del procedimiento matemático
+- Ideal para aprender métodos de solución de sistemas lineales
+- Comparación entre métodos diferentes
+
+### **2. Técnico**
+- Uso de **NumPy** para cálculos matriciales eficientes
+- **Programación orientada a objetos** bien estructurada
+- **Interfaz responsiva** con validaciones
+
+### **3. Visual**
+- **Diseño único** cyberpunk poco común en aplicaciones académicas
+- **Animaciones fluidas** que mejoran la experiencia de usuario
+- **Exportación profesional** de resultados
+
+### **4. Funcional**
+- Soporte para **sistemas grandes** (hasta 6x6)
+- **Múltiples formatos de salida** (pantalla, PDF, TXT)
+- **Precisión configurable** (decimales vs fracciones)
+
+---
+
+## **PREGUNTAS TÍPICAS QUE PODRÍAN HACERTE**
+
+**¿Por qué eligieron estos métodos?**
+- Cramer: Conceptualmente simple, ideal para enseñanza
+- Gauss-Jordan: Más eficiente para sistemas grandes, universalmente aplicable
+
+**¿Qué ventajas tiene sobre una calculadora?**
+- Muestra el procedimiento completo
+- Exporta documentación
+- Permite verificar pasos intermedios
+- Visualización gráfica
+
+**¿Limitaciones del programa?**
+- Gráficas solo para 2x2
+- Métodos no optimizados para matrices muy grandes
+- Requiere que el sistema tenga solución única
+
+---
+
+## **EQUIPO DE DESARROLLO**
+
+- **Danniel Eraso** - Neural Architecture
+- **Jordan Ramon** - Matrix Core Systems  
+- **Erick Cuevas** - UI/UX Cybernetics
+
+**Institución:** FESC  
+**Programa:** Ingeniería de Software  
+**Año:** 2025
+
+---
+
+Este código demuestra una excelente combinación de **fundamentos matemáticos sólidos**, **programación estructurada** y **diseño de interfaz creativo**.
+
+---
